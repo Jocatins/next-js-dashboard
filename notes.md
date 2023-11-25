@@ -33,3 +33,30 @@ Futhermore, in production, whenever <Link> components appear in the browser's vi
 `A common UI pattern` is to show an active link to indicate to the user what page they are currently on. To do this, you need to get the user's current path from the URL. Next.js provides a hook called `usePathname() `that you can use to check the path and implement this pattern.
 
 Since `usePathname()` is a hook, you'll need to turn nav-links.tsx into a Client Component.
+
+### Populating the database `troubleshooting`
+
+- Make sure to reveal your database secrets before copying it into your .env file.
+- The script uses bcrypt to hash the user's password, if bcrypt isn't compatible with your environment, you can update the script to use bcryptjs instead.
+- If you run into any issues while seeding your database and want to run the script again, you can drop any existing tables by running DROP TABLE tablename in your database query interface. See the executing queries section below for more details. But be careful, this command will delete the tables and all their data. It's ok to do this with your example app since you're working with placeholder data, but you shouldn't run this command in a production app.
+
+In Next.js, you can create API endpoints using Route Handlers.
+
+There are a few cases where you have to write database queries:
+
+- When creating your API endpoints, you need to write logic to interact with your database.
+- If you are using React Server Components (fetching data on the server), you can skip the API layer, and query your database directly without risking exposing your database secrets to the client.
+
+#### What are request waterfalls?
+
+A "`waterfall`" refers to a sequence of network requests that depend on the completion of previous requests. In the case of data fetching, each request can only begin once the previous request has returned data.
+
+we need to wait for fetchRevenue() to execute before fetchLatestInvoices() can start running, and so on.
+
+#### Parallel data fetching
+
+---
+
+A common way to avoid waterfalls is to initiate all data requests at the same time - in parallel.
+
+In JavaScript, you can use the Promise.all() or Promise.allSettled() functions to initiate all promises at the same time. For example, in data.ts, we're using Promise.all() in the fetchCardData() function:
