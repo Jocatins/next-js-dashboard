@@ -144,3 +144,32 @@ In React, you can use the action attribute in the <form> element to invoke actio
 Tip: If you're working with forms that have many fields, you may want to consider using the entries() method with JavaScript's Object.fromEntries(). For example:
 
 const rawFormData = Object.fromEntries(formData.entries())
+
+Npm Lint
+
+Add next lint as a script in your package.json file:
+"lint": "next lint"
+
+Then run npm run lint in your terminal:
+
+#### Improving form accessibility
+
+- `Semantic HTML`: Using semantic elements (<input>, <option>, etc) instead of <div>. This allows assistive technologies (AT) to focus on the input elements and provide appropriate contextual information to the user, making the form easier to navigate and understand.
+- `Labelling:` Including <label> and the htmlFor attribute ensures that each form field has a descriptive text label. This improves AT support by providing context and also enhances usability by allowing users to click on the label to focus on the corresponding input field.
+- `Focus Outline:` The fields are properly styled to show an outline when they are in focus. This is critical for accessibility as it visually indicates the active element on the page, helping both keyboard and screen reader users to understand where they are on the form. You can verify this by pressing tab.
+
+### Setting up NextAuth.js and Authentication vs. Authorization
+
+`Authentication` checks who you are, and `Authorization` determines what you can do or access in the application.
+
+npm install next-auth@beta
+
+- Generate a secret key for your application.
+
+openssl rand -base64 32
+
+Open git bash and run the command
+
+`Password hashing`
+
+Hashing converts a password into a fixed-length string of characters, which appears random, providing a layer of security even if the user's data is exposed.
