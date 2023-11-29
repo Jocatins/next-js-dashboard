@@ -7,6 +7,8 @@ This is the starter template for the Next.js App Router Course. It contains the 
 /app/ui: Contains all the UI components for your application, such as cards, tables, and forms. To save time, we've pre-styled these components for you.
 /public: Contains all the static assets for your application, such as images
 
+`Tailwind` is a CSS framework that speeds up the development process by allowing you to quickly write utility classes directly in your TSX markup.
+
 `clsx` is a library that lets you toggle class names easily.
 
 `Cumulative Layout Shift` is a metric used by Google to evaluate the performance and user experience of a website. With fonts, layout shift happens when the browser initially renders text in a fallback or system font and then swaps it out for a custom font once it has loaded. This swap can cause the text size, spacing, or layout to change, shifting elements around it.
